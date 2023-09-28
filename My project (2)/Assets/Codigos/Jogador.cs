@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Jogador: MonoBehaviour
 {
-    public int velocidade = 10;
-    public Rigidbody rb;
+    private int velocidade = 10;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,14 @@ public class Jogador: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float J = Input.GetAxis("Jump");
         float H = Input.GetAxis("Horizontal");
         float V = Input.GetAxis("Vertical");
+        
+        Vector3 direcao = new Vector3(H,0,V);
+        rb.AddForce(direcao * velocidade * Time.deltaTime,ForceMode.Impulse);
 
-        rb.AddForce(new Vector3(H,J,V)* velocidade);
+        if(transform.position.y <= -5 ){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
