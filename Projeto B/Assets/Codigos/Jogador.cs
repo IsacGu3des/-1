@@ -7,6 +7,7 @@ public class Jogador: MonoBehaviour
 {
     private int velocidade = 10;
     private Rigidbody rb;
+    private AudioSource source;
     public int forcaPulo = 7;
     public bool noChao;
 
@@ -15,6 +16,7 @@ public class Jogador: MonoBehaviour
     void Start()
     {
         TryGetComponent(out rb);
+        TryGetComponent(out source);
     }
     private void OnCollisionEnter(Collision collision){
         if (!noChao && collision.gameObject.tag == "Chão" ){
@@ -29,6 +31,8 @@ public class Jogador: MonoBehaviour
         float H = Input.GetAxis("Horizontal");
         float V = Input.GetAxis("Vertical");
         if(Input.GetKeyDown(KeyCode.Space) && noChao){
+            source.Play();
+
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             noChao = false;
         }

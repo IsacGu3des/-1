@@ -15,6 +15,7 @@ public class Moeda : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
+            FindObjectOfType<GameManager>().TirarMoedas(1);
             Destroy(gameObject);
         }
     }
