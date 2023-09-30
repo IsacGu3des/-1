@@ -17,7 +17,9 @@ public class Jogador: MonoBehaviour
         TryGetComponent(out rb);
     }
     private void OnCollisionEnter(Collision collision){
-        throw new NotImplementedExcepition();
+        if (!noChao && collision.gameObject.tag == "Chão" ){
+            noChao = true;
+        }
     }
 
 
@@ -26,8 +28,9 @@ public class Jogador: MonoBehaviour
     {
         float H = Input.GetAxis("Horizontal");
         float V = Input.GetAxis("Vertical");
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Space) && noChao){
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
+            noChao = false;
         }
         
         
