@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Jogador: MonoBehaviour
 {
-    private int velocidade = 10;
+    public int velocidade = 10;
     private Rigidbody rb;
     private AudioSource source;
     public int forcaPulo = 7;
