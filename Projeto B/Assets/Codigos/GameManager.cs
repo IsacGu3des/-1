@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         HUD.text = $"Moedas restantes {moedasR}";
         source.PlayOneShot(clipMoeda);
         if(moedasR <= 0){
-            GG.text = "Parabens";
+            GG.text = "Parabéns";
             source.Stop();
             source.PlayOneShot(clipWin);
         }

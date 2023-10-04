@@ -31,6 +31,7 @@ public class Jogador: MonoBehaviour
         float H = Input.GetAxis("Horizontal");
         float V = Input.GetAxis("Vertical");
         if(Input.GetKeyDown(KeyCode.Space) && noChao){
+
             source.Play();
 
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
